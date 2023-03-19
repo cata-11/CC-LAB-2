@@ -3,6 +3,8 @@ const cors = require('cors');
 
 const bodyParser = require('body-parser');
 const booksRoutes = require('./routes/books');
+const searchBooks = require('./routes/search-books')
+const searchMovies = require('./routes/search-movies')
 
 const app = express();
 
@@ -12,6 +14,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.use(booksRoutes);
+app.use(searchBooks);
+app.use(searchMovies);
 
 app.use('*', (req, res, next) => {
   const error = new Error(`Not Found - ${req.originalUrl}`);
