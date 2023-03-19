@@ -82,10 +82,13 @@ const notFound = (res) => {
 const createBook = (req, res) => {
   let data = '';
   req.on('data', (chunk) => {
+    console.log(chunk)
     data += chunk;
   });
   req.on('end', () => {
-    const book = JSON.parse(data);
+    console.log(data)
+    const book = JSON.parse(data); 
+    console.log(book)
     connection.query(
       'INSERT INTO Books SET ?',
       book,

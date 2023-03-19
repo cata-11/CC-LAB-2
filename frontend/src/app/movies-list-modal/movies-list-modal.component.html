@@ -1,0 +1,15 @@
+<section class="modal">
+  <h1 mat-dialog-title class="title">Movies</h1>
+  <ul class="list" *ngId="data?.length">
+    <li *ngFor="let movie of data">
+      <h2>{{ movie.Title }}</h2>
+      <div>Year: {{ movie.Year }}</div>
+      <div class="img">
+        <img [src]="movie.Poster" />
+      </div>
+    </li>
+  </ul>
+  <div *ngIf="data.length == 0" class="not-found">
+    No movies found.
+  </div>
+</section>

@@ -19,15 +19,9 @@ app.get('/search', async (req, res) => {
     const apiUrl = `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}`;
     const response = await axios.get(apiUrl);
     const books = response.data.items;
-
-    const bookTitles = books.map((book) => book.volumeInfo.title);
-    const bookAuthors = books.map((book) => book.volumeInfo.authors);
-    const bookDescriptions = books.map((book) => book.volumeInfo.description);
-
+    console.log(books)
     res.status(200).json({
-      titles: bookTitles,
-      authors: bookAuthors,
-      descriptions: bookDescriptions
+      books: books
     });
   } catch (error) {
     res.status(500).send('Internal server error');

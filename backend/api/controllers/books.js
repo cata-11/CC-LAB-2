@@ -24,7 +24,7 @@ const createBook = async (req, res, next) => {
   try {
     const data = req.body;
     const response = await axios.post(`${baseUrl}/books`, data);
-    res.json({ data: response.data });
+    res.status(201).json({ data: response.data });
   } catch (err) {
     next({message: err?.response?.data?.error, status: err?.response?.status});
   }
